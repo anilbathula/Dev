@@ -1,0 +1,85 @@
+<apex:page standardController="sms_force_RI__SFSMS__c" extensions="sms_force_RI.SingleSMS">
+<apex:pageMessages />
+<apex:form >
+
+<script language="JavaScript">
+    
+    window.onload = function() { 
+        check_length();
+    }
+    
+    function check_length()
+    {
+        maxLen = 160;
+        if (document.getElementById('{!$Component.pb1:pbs2:pbsi4:msgArea}').value.length >= maxLen) {
+            var msg = "You have reached your maximum limit of characters allowed.!!";
+            alert(msg);
+            document.getElementById('{!$Component.pb1:pbs2:pbsi4:msgArea}').value = document.getElementById('{!$Component.pb1:pbs2:pbsi4:msgArea}').value.substring(0, maxLen);
+            //document.getElementById('{!$Component.pb1:pbs2:pbsi5:charUtil}').value = 0;
+            document.getElementById('{!$Component.pb1:pbs2:pbsi5:charUtil}').value =  document.getElementById('{!$Component.pb1:pbs2:pbsi4:msgArea}').value.length;
+        
+        }
+        else{
+            document.getElementById('{!$Component.pb1:pbs2:pbsi5:charUtil}').value =  document.getElementById('{!$Component.pb1:pbs2:pbsi4:msgArea}').value.length;
+        }
+    }
+</script>
+<apex:panelGrid columns="1" width="100%">
+<apex:pageBlock title="New SMS" id="pb1" rendered="{!(!isTabView)}">
+    <apex:pageBlockSection columns="1" id="pbs1">
+        <apex:pageBlockSectionItem rendered="{!sms.sms_force_RI__Contact_Name__c==null}" >
+            <apex:outputText value="Lead Name"/>
+            <apex:outputField value="{!sms_force_RI__SFSMS__c.sms_force_RI__Lead_Name__c}"/>
+        </apex:pageBlockSectionItem>
+        
+         <apex:pageBlockSectionItem rendered="{!sms.sms_force_RI__Lead_Name__c==null}" >
+            <apex:outputText value="Contact Name"/>
+            <apex:outputField value="{!sms.sms_force_RI__Contact_Name__c}"/>
+        </apex:pageBlockSectionItem>
+        
+        
+        <apex:pageBlockSectionItem >
+            <apex:outputText value="Mobile No."/>
+            <apex:outputField value="{!sms.sms_force_RI__Mobile_No__c}" />
+        </apex:pageBlockSectionItem>
+        
+      
+        <apex:pageBlockSectionItem rendered="{!lead.DoNotCall==true}" >
+            <apex:outputText value="{!lead.Name} has Do Not Call.<br> Do you wish to Opt out this SMS?</br>"/>
+            <apex:inputField value="{!sms.sms_force_RI__Sms_Opt_Out__c}"  />
+        </apex:pageBlockSectionItem>
+        
+        <apex:pageBlockSectionItem helpText="Choose the template which u  want to send by clicking the look-up" >                
+           Choose Template <apex:inputField value="{!sms.sms_force_RI__SFTemplates__c}" style="width:30%" > 
+            <apex:actionSupport event="onchange" action="{!setTemplate}"  oncomplete="check_length()" reRender="pbs2" />  
+            </apex:inputField>                                   
+        </apex:pageBlockSectionItem>
+      
+    </apex:pageBlockSection>
+    
+    <apex:pageBlockSection columns="1" id="pbs2">     
+        <apex:pageBlockSectionItem id="pbsi4">                   
+            <apex:outputText value="Text Message"/>
+            <apex:inputField value="{!sms.sms_force_RI__Text_Message__c}" onkeyup="check_length()"  
+                id="msgArea" style="width:60%;height:20;"/>            
+        </apex:pageBlockSectionItem>
+        
+        
+        <apex:pageBlockSectionItem id="pbsi5">
+            Characters Utilized
+            <apex:inputText id="charUtil" size="3" disabled="true"/> 
+        </apex:pageBlockSectionItem>
+    </apex:pageBlockSection>
+</apex:pageBlock>
+    
+</apex:panelGrid>
+<apex:pageBlock rendered="{!isTabView}">
+    <apex:commandLink value="Steps to Send SMS" action="{!stepsToSendSMS}"/>
+</apex:pageBlock>
+    <center>
+        <apex:commandButton value="Send " Action="{!send}" rendered="{!(!isTabView)}"/> 
+        <apex:commandButton value="Back" Action="{!Back2lead}" rendered="{!sms.sms_force_RI__Contact_Name__c==null && (!isTabView)}" />
+        <apex:commandButton value="Back" Action="{!Back2contact}" rendered="{!sms.sms_force_RI__Lead_Name__c==null && (!isTabView)}" />
+    </center>
+</apex:form>  
+</apex:page>

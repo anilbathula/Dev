@@ -1,0 +1,80 @@
+<apex:page standardController="Lead" extensions="lComments" >
+<apex:form id="main" >
+<table>
+
+<div style="overflow:auto; height: 250px; width:500px;"   >
+
+        <div id="parentdiv" style="text-align:center;width:30px;margin:auto; ">
+            <apex:commandButton value="New" action="{!custNew}" reRender="main,reff,ref" rendered="{!hidebutton}" />
+        </div>
+        <style type="text/css">
+            .newLink { color: #01A9DB; font-weight: bold;}
+            .sample { color: #0000ff; font-weight:bold;}
+            .newLinks { color:#00FF00 ; font-weight: bold;}
+            .hidelink {display:none}
+        </style>
+           
+        <apex:pageBlock rendered="{!Property}" id="reff">     
+            <apex:pageBlockSection columns="1"   >        
+                 <apex:inputField value="{!com.Comments_text__c}" style="width:350px;height:100px" />                 
+                    <apex:panelGrid columns="4" width="650px;" id="ges" rendered="{!hideblock}">
+                        <apex:outputText value="{0,date,E MMM dd  S}" styleClass="newLink"  >
+                        <apex:param value="{!com.CreatedDate}" /> 
+                        </apex:outputText>                        
+                        <apex:outputText value="{!com.Comment_Created_from__c}" styleClass="newLink" / >
+                     <!--<apex:outputText value="{!com.LastModifiedDate+0.23}" />
+                     <apex:outputField value="{!com.LastModifiedDate}" />-->
+
+                    </apex:panelGrid>    
+            </apex:pageBlockSection>  
+            <apex:pageBlockButtons location="Bottom">     
+
+                <apex:commandbutton action="{!custSave}" title="Save" value="Save"     />     
+                 <apex:commandbutton action="{!custCancel}" title="Save" value="Cancel"  />  
+               <!--<apex:commandbutton action="{!cancel}" title="cancel" value="Cancel" onclick="window.history.previous()" />-->
+            </apex:pageBlockButtons>
+         </apex:pageBlock> 
+         
+<apex:pageBlock rendered="{!hidebutton}" > 
+
+    
+
+    <apex:repeat value="{!listCom}" var="s"  >    
+                    
+               <apex:outputText value="  {0,date,E MMM dd [hh:mm a] yyyy}" styleClass="newLink" >
+                 <apex:Param value="{!s.CreatedDate+0.23}" /> 
+                </apex:outputText> 
+
+          <!--  <apex:outputText value="{!s.CreatedDate+0.23}" styleClass="newLink" />-->
+                   
+            <apex:outputText value="{!s.Owner.Name}" styleClass="newLink" /> 
+             -
+            <apex:outputText value="{!s.Role__c}" styleClass="newLinks" />
+            &nbsp;&nbsp;
+            <apex:commandLink value=""  action="{!custEdit}" reRender="main,reff,ges" styleClass="newLink"> 
+            <!-- <apex:image id="imgLogo11" url="{!$Resource.edit}" style="height:20px;width:20px;" /> ---> 
+             <apex:image id="imgLogo11" url="/servlet/servlet.FileDownload?file=01590000000zUhw" style="height:20px;width:20px;" />   
+            <apex:param name="cid" value="{!s.id}" assignTo="{!selid}" />
+            </apex:commandlink>       
+            |
+            <apex:commandLink value="" action="{!custDel}" reRender="main"  >
+           
+             <apex:image id="imgLogo1" url="{!$Resource.Dustbin}" style="height:20px;width:20px;" /> 
+            <!-- <apex:image id="ImgId" url="/servlet/servlet.FileDownload?file=01590000000Syqz" style="Color:black;background-color:white;" width="250" height="150"/>-->
+            <apex:param name="cid" value="{!s.id}" assignTo="{!delid}"/>
+            </apex:commandlink>   
+             
+            <br>
+            <apex:outputText value="{!s.Comments_text__c}" style="overflow:auto;width:350px;" />  
+            </br><br>   
+            <div style="width:100%; height:1px; background:grey;" />      
+            </br>
+    
+    </apex:repeat>        
+
+</apex:pageBlock>    
+
+</div>
+</table>
+</apex:form>
+</apex:page>

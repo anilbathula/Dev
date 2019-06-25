@@ -1,0 +1,62 @@
+<apex:page StandardController="Lead" tabStyle="Lead"   > 
+<apex:form >
+<apex:pageBlock >
+
+<apex:pageBlockSection >
+    <apex:panelgrid columns="2">
+        <apex:iframe src="http://www.salesforce.com" scrolling="true" id="theIframe" height="350" width="500"/>
+        <apex:iframe src="http://www.salesforce.com" scrolling="true" id="theIframes" height="350" width="500"/>
+    </apex:panelgrid>
+</apex:pageBlockSection>
+
+<apex:pageBlockSection >
+    <apex:panelgrid columns="2">
+        <apex:iframe src="https://ap1.salesforce.com/a0990000006MQf6" scrolling="true" id="theIframe" height="350" width="500" title="Comments" frameborder="false" />
+        <apex:iframe src="http://www.salesforce.com" scrolling="true" id="sed" height="350" width="500" frameborder="false"/>
+    </apex:panelgrid>
+</apex:pageBlockSection>
+
+<apex:pageBlockSection >
+    <apex:panelgrid columns="2">
+        <apex:iframe src="http://www.salesforce.com" scrolling="true" id="theIframe" height="350" width="500"/>
+        <apex:iframe src="http://www.salesforce.com" scrolling="true" id="theIframes" height="350" width="500"/>
+    </apex:panelgrid>
+</apex:pageBlockSection>
+
+<apex:pageBlockSection id="sed" >
+<apex:panelGrid columns="2">
+<div id="container" style="width:500px" >
+
+
+<b><font face="Calibri"  size="4" color="Red">Program Name
+<apex:OutputText value="{!Lead.name}"/>  </font></b>
+<b><font face="Calibri"  size="4" color="Red">Program Country </font></b>
+<apex:Outputtext value="{!Lead.Company}"/> 
+<b><font face="Calibri"  size="4" color="Red">StartDate </font></b>
+<apex:Outputtext value="{!Lead.Company}"/> 
+<b><font face="Calibri"  size="4" color="red">End Date</font></b>
+<apex:Outputtext value="{!Lead.Company}"/> 
+
+</div>
+<div id="btn1" onclick="//somehow call page2Link here"><a href="page2.html" id="page2Link">Page 2</a></div>
+</apex:panelGrid>
+<div id="container" style="width:500px" >
+<div id="header" style="background-color:#FFA500;">
+<h1 style="margin-bottom:0;">Main Title of Web Page</h1></div>
+<b><font face="Calibri"  size="2" color="Red"><h1>Program Name
+<apex:OutputText value="{!Lead.name}"/> </h1>  </font></b>
+</div>
+
+
+</apex:pageBlockSection>
+
+
+
+
+
+
+ 
+</apex:pageBlock>
+</apex:form> 
+
+</apex:page>

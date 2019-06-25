@@ -1,0 +1,19 @@
+<apex:page standardController="contact" extensions="ActivityController">
+<Apex:form >
+<apex:pageBlock title="Activity History" >
+<apex:commandLink action="{!Cancel}" title="cancel" value="{!Cont.Name}"   style="Color:#4483C2;"/> 
+
+<apex:pageBlockTable value="{!acthist}" var="a">
+    <apex:column value="{!a.id}"/>
+    <apex:column value="{!a.istask}"/>
+    <apex:column value="{!a.ActivityType}"/>
+    <apex:column value="{!a.CallType}"/>
+    <apex:column value="{!a.ActivityDate}"/>
+    <apex:column value="{!a.owner.Name}"/>
+    <apex:column value="{!a.what.Name}"  /> 
+    <apex:column value="{!a.LastModifiedDate}"  />       
+</apex:pageBlockTable>
+
+</apex:pageBlock>
+</apex:form>
+</apex:page>

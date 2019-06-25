@@ -1,0 +1,9 @@
+<apex:page Controller="testimg_cls"  >
+<apex:repeat value="{!acc}" var="a">
+ 
+{!a.name}  <!-- You can add whatever field you needed -->
+{!a.phone}
+{!a.fax}
+</apex:repeat>
+ 
+</apex:page>

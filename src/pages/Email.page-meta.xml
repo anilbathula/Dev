@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>24.0</apiVersion>
+    <availableInTouch>false</availableInTouch>
+    <confirmationTokenRequired>false</confirmationTokenRequired>
+    <description>This page helps u 2 show the demo. how u can send the document through a class from salesforce. as  pdf.  Related Class is {Document EmailController}</description>
+    <label>Email</label>
+    <packageVersions>
+        <majorNumber>2</majorNumber>
+        <minorNumber>72</minorNumber>
+        <namespace>OBJCNVTR</namespace>
+    </packageVersions>
+</ApexPage>

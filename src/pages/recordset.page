@@ -1,0 +1,12 @@
+<apex:page standardController="contact" recordSetVar="contacts" >
+<apex:form >
+<apex:pageBlock title="Viewing Contacts">
+<apex:pageBlockTable value="{!contacts}" var="c">
+<apex:column value="{!c.name}"/>
+</apex:pageBlockTable>
+<apex:pageBlockButtons >
+<apex:commandButton value="Save" action="{!Save}" />
+</apex:pageBlockButtons>
+</apex:pageBlock>
+</apex:form>
+</apex:page>

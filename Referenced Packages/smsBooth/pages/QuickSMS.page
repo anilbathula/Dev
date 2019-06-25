@@ -1,0 +1,53 @@
+<apex:page standardController="lead" extensions="sms_force_RI.QuickSMS" >
+<apex:form >
+<script language="JavaScript">
+       
+    window.onload = function() { 
+        check_length();
+    }
+    
+    function check_length()
+    {
+        maxLen = 160;
+        if (document.getElementById('{!$Component.pb1:pbs1:msgArea}').value.length >= maxLen) {
+            var msg = "You have reached your maximum limit of characters allowed.!!";
+            alert(msg);
+            document.getElementById('{!$Component.pb1:pbs1:msgArea}').value = document.getElementById('{!$Component.pb1:pbs1:msgArea}').value.substring(0, maxLen);
+            document.getElementById('{!$Component.pb1:pbs1:pbsi1:charUtil}').value =  document.getElementById('{!$Component.pb1:pbs1:msgArea}').value.length;
+        
+        }
+        else{
+            document.getElementById('{!$Component.pb1:pbs1:pbsi1:charUtil}').value =  document.getElementById('{!$Component.pb1:pbs1:msgArea}').value.length;
+        }
+    }
+</script>
+
+
+    <apex:sectionHeader title="New Lead" subtitle="{!lead.name}"/>
+    <apex:pageBlock title="Lead Edit" id="pb1">
+    <apex:pageMessages />
+    
+        <apex:pageBlockButtons >
+            <apex:commandButton value="Send" action="{!send}"/>
+            <apex:commandButton value="Send & New" action="{!sendAndNew}"/>
+            <apex:commandButton value="Cancel" action="{!Cancel}"/>        
+        </apex:pageBlockButtons>
+    
+        <apex:pageBlockSection title="Quick Create Lead and Send SMS" columns="1" id="pbs1">
+            <apex:inputField value="{!ld.FirstName}"/>
+            <apex:inputField value="{!ld.LastName}"/>               
+            <apex:inputField value="{!ld.MobilePhone}" required="true"/>
+            <apex:inputField value="{!ld.Company}"/>
+            
+            <apex:inputTextarea value="{!message}"  onkeyup="check_length()" id="msgArea" required="true"
+                label="Text Message" style="width:60%;height:20;">
+            </apex:inputTextarea>
+            
+            <apex:pageBlockSectionItem id="pbsi1">
+                Characters Utilized
+                <apex:inputText id="charUtil" size="3" disabled="true"/> 
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:form>
+</apex:page>

@@ -1,0 +1,8 @@
+<apex:page >
+ <c:AutoComplete autocomplete_textbox="lookup" selectedvalue_textbox="hiddenId" />
+  <apex:pageblock title="Autocomplete Search Demo">
+  <b>Contact Search</b>
+  <input type="text" id="lookup" />
+  <input type="hidden" id="hiddenId" />
+  </apex:pageblock>
+</apex:page>

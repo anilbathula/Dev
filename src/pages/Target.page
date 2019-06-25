@@ -1,0 +1,6 @@
+<apex:page controller="Target">
+    <h1>Target</h1>
+    <apex:repeat value="{!ids}" var="id">
+        <div>{!id}</div>
+    </apex:repeat>
+</apex:page>

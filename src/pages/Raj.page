@@ -1,0 +1,24 @@
+<apex:page id="pageId" standardcontroller="lead__c" wizard="false">  
+<apex:form id="formId">  
+
+ 
+    <apex:pageblock id="pbId">  
+    
+        <apex:pageBlockButtons >
+           <apex:commandButton value="Cancel" action="{!cancel}"/>
+           <apex:commandButton value="Save" action="{!save}"/>
+        </apex:pageBlockButtons>
+        
+        <apex:pageblocksection columns="2" id="pbsIs">  
+        <apex:page >
+   <apex:pageMessage severity="info" strength="1" summary="{!$ObjectType.lead__c}" 
+   />
+</apex:page>
+            <apex:repeat value="{!$ObjectType.lead__c.FieldSets.Mytest}" var="f">  
+                <apex:inputfield value="{!lead__c[f]}">  
+            </apex:inputfield></apex:repeat>  
+        </apex:pageblocksection>  
+        
+    </apex:pageblock>  
+</apex:form>  
+</apex:page>

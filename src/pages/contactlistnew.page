@@ -1,0 +1,27 @@
+<apex:page standardController="contact" recordSetVar="contacts" extensions="cont"   >
+<apex:form >
+<apex:pageBlock >
+
+
+
+    <br>  Account id : {!accId}</br>
+    <br>   Account name:{!ac.Name}</br> 
+    <br>   Account Phone:{!ac.Phone}</br>   
+    <br>  Total Accounts:{!i}</br>
+    
+    <br>  Account id : {!accId}</br>
+    <br>   Account name:{!ac.Name}</br> 
+    <br>   Account Phone:{!ac.Phone}</br>   
+    <br>  Total Accounts:{!i}</br>
+ 
+    <!--<apex:page action="{!Save}"/>-->
+  <!--  <apex:iframe src="http://www.salesforce.com" scrolling="true" id="theIframe"/>-->
+
+    
+ <!--    <apex:pageBlockButtons >
+        <apex:commandButton value="Redirect to standard page"  action="{!Save}"/>              
+    </apex:pageBlockButtons>-->
+    
+</apex:pageBlock>     
+</apex:form>
+</apex:page>

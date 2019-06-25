@@ -1,0 +1,7 @@
+<apex:page standardController="Case" extensions="AllAttachmentsController">
+    <h1>Link Farm: </h1>
+
+    <apex:repeat value="{!attLinks}" var="ad">
+        <li><a href="{!ad}">CLICK ME</a></li>
+    </apex:repeat>
+ </apex:page>

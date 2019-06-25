@@ -1,0 +1,41 @@
+<apex:page StandardController="Lead" tabStyle="Lead"  > 
+<apex:form >
+<apex:pageblock title="Leads"  mode="Edit" >
+    <apex:pageBlockButtons >
+            <apex:commandButton action="{!Save}" value="Save"/>
+            <apex:commandButton action="{!Cancel}" value="Cancel"/> 
+        </apex:pageBlockButtons> 
+        
+  <apex:pageBlockSection columns="2" title="Lead Details(Enter the mandatory fields(red marked) before proceeding to Lead Preferences Section" >                               
+    
+                                       
+                    <apex:inputField value="{!Lead.FirstName}"/> 
+                    <apex:inputField value="{!Lead.LastName}"/>
+                    <apex:inputField value="{!Lead.Title}"/>   
+                    <apex:inputField value="{!Lead.Company}"/> 
+                    <apex:outputPanel >                                                                          
+                  <apex:inputField value="{!lead.Status}" label="Status" />
+                    <apex:actionSupport event="onchange" 
+                    reRender="Sal" status="Ap"/>
+                    <apex:actionStatus startText="applying value..." id="Ap"/>                  
+                    </apex:outputPanel>     
+                    </apex:pageblockSection>  
+                    
+                    
+               <apex:outputPanel id="Sal">
+                    <apex:pageBlockSection title="Details" rendered="{!lead.Status=='Working - Contacted'}"  columns="2" >
+                      
+                           <!-- <apex:outputText value="EMAIL"/>-->
+                            <apex:inputField value="{!lead.Email}" label="Email2" />                        
+                      
+                     </apex:pageBlockSection>
+               </apex:outputPanel>  
+                              
+
+
+
+
+
+</apex:pageblock>
+</apex:form>
+</apex:page>

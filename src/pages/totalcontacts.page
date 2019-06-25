@@ -1,0 +1,13 @@
+<apex:page standardController="Account" extensions="test"   >
+<apex:form >
+<apex:pageBlock >
+
+
+
+      
+    <br>  Total Accounts:{!i}</br>
+  
+    
+</apex:pageBlock>     
+</apex:form>
+</apex:page>

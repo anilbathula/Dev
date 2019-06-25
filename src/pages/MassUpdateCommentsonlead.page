@@ -1,0 +1,27 @@
+<apex:page standardController="Comments__c" recordSetVar="application">
+  <apex:sectionHeader title="Mass Update the Commented by"/>
+  <apex:form >
+    <apex:pageBlock >
+      <apex:pageMessages />
+      <apex:pageBlockButtons >
+        <apex:commandButton value="Save"
+            action="{!save}"/>
+        <apex:commandButton value="Cancel"
+            action="{!cancel}"/>
+      </apex:pageBlockButtons>
+      <apex:pageBlockSection title="Status Update" collapsible="false">
+        <apex:inputField value="{!Comments__c.Commented_by__c}"/>
+      </apex:pageBlockSection>
+      <apex:pageBlockSection title="Selected Comments" columns="1">
+        <apex:pageBlockTable value="{!selected}" var="app">
+          <apex:column value="{!app.name}"/>
+          <apex:column value="{!app.Lead__r.name}"/>
+          <apex:column headerValue="Candidate Name">
+            <apex:outputText value="{!app.Lead__r.Firstname & ' ' & app.lead__r.LastName}"/>
+          </apex:column>
+          <apex:column value="{!app.Commented_by__c}"/>
+        </apex:pageBlockTable>
+      </apex:pageBlockSection>
+    </apex:pageBlock>
+  </apex:form>
+</apex:page>

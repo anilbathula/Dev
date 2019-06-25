@@ -1,0 +1,19 @@
+<apex:page standardController="Account" recordSetVar="accounts" tabstyle="account" sidebar="false">
+  <apex:pageBlock >
+    <apex:form >
+      <apex:panelGrid columns="2">
+        <apex:outputLabel value="View:"/>
+        <apex:selectList value="{!filterId}" size="1">
+          <apex:actionSupport event="onchange" rerender="list"/>
+          <apex:selectOptions value="{!listviewoptions}"/>
+        </apex:selectList>
+      </apex:panelGrid>
+      <apex:pageBlockTable value="{!accounts}" var="a" id="list">
+        <apex:column value="{!a.name}"/>
+         <apex:column value="{!a.Phone}"/>
+         <apex:column value="{!a.Type}"/>
+        <apex:column value="{!a.Billingcity}"/>
+      </apex:pageBlockTable>
+    </apex:form>
+  </apex:pageBlock>
+</apex:page>

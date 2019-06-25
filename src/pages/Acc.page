@@ -1,0 +1,17 @@
+<apex:page standardController="account" >
+<script src="/soap/ajax/22.0/connection.js"></script>
+<script src="/soap/ajax/22.0/apex.js"></script>
+<script>
+var arrId = '{!$CurrentPage.parameters.id}';
+var queryresult = sforce.connection.query("Select Rating from account where id='"+arrId+"'");
+var records = queryresult.getArray("records");
+
+if(records[0].Active__c=='Warm')
+{
+window.open('/apex/Raj');
+}
+
+
+</script>
+
+</apex:page>

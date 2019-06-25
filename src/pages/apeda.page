@@ -1,0 +1,31 @@
+<apex:page standardController="Lead">
+ <apex:pageBlock title="My Content" mode="edit">
+<apex:pageBlockSection id="sed" >
+<apex:panelGrid columns="2">
+<div id="container" style="width:500px" >
+
+
+<b><font face="Calibri"  size="4" color="Red">Program Name
+<apex:OutputText value="{!Lead.name}"/>  </font></b>
+<b><font face="Calibri"  size="4" color="Red">Program Country </font></b>
+<apex:Outputtext value="{!Lead.Company}"/> 
+<b><font face="Calibri"  size="4" color="Red">StartDate </font></b>
+<apex:Outputtext value="{!Lead.Company}"/> 
+<b><font face="Calibri"  size="4" color="red">End Date</font></b>
+<apex:Outputtext value="{!Lead.Company}"/> 
+
+</div>
+<div id="btn1" onclick="//somehow call page2Link here"><a href="page2.html" id="page2Link">Page 2</a></div>
+</apex:panelGrid>
+<div id="container" style="width:500px" >
+<div id="header" style="background-color:#FFA500;">
+<h1 style="margin-bottom:0;">Main Title of Web Page</h1></div>
+<b><font face="Calibri"  size="2" color="Red"><h1>Program Name
+<apex:OutputText value="{!Lead.name}"/> </h1>  </font></b>
+</div>
+
+
+</apex:pageBlockSection> 
+ </apex:pageBlock>
+
+</apex:page>

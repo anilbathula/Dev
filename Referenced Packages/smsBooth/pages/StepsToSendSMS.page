@@ -1,0 +1,107 @@
+<apex:page standardController="sms_force_RI__SFSMS__c">
+
+    <style type="text/css">
+    p {}
+    </style>
+
+    <apex:pageBlock >
+    <p>To top up your SMS credit and to configure <i>smsforce</i>
+    <a href="http://www.rixyncs.co.in/contact.htm" target="_blank"><h2> Contact Us</h2></a> <br></br> or call us on 91 80 41330014 ( 9 a.m to 6 p.m IST)
+    </p>    
+         <apex:pageBlockSection title="Steps to create Template" > 
+            
+            <p> 1. Go to Template Tab.Click "New" button.<br></br>
+                2. Enter Template Name and temlate body and select the Active checkbox. <br></br>
+                3. If Active check box is not selected then that template will not show on the time when we use
+                   Choose templete to send the Sms.<br></br>
+                4. Click Save.
+            </p>
+            
+        </apex:pageBlockSection> 
+        
+        <apex:pageBlockSection title="Steps to QuickSMS" > 
+            
+                <p> 1. On the left hand side of the Home Page,on custom link section ,you will find a link called "QuickSms" .<br></br>
+                    2. Click the Link.This will take you to the Quicksms page. <br></br>
+                    3. Enter all the field.Fields in red are mandatory.<br></br>
+                    4. Click Send.This will create a Lead into the system and send and SMS to the mobile number
+                       which you had provided.
+                </p>
+            
+        </apex:pageBlockSection> 
+        
+        <apex:pageBlockSection title="Single Sms from Lead" >
+            
+                <p> 1. Go to Lead Tab.Click "New" button.<br></br>
+                    2. Enter all the information about lead.Don't forget to fill the  mandatory  field,which
+                       are marked in "RED" colour.Please  fill the "Mobile" field.Click save.<br></br>
+                    3. Scroll down you will find a Related list called "SMS Tracker".<br></br>
+                    4. Click "New SMS".<br></br>
+                    5. Enter the preferred message which you want to send or  else click on the 
+                       Choose Template lookup.Choose the  template which you want to send.The template message
+                       will automatically appear on the Text Message Area.<br></br>
+                    6. Click "Send" Buttom.                
+                </p>
+        </apex:pageBlockSection>
+        
+         
+        <apex:pageBlockSection title="Single Sms from Contact">
+        
+                <p> 1. Go to Contact Tab.Click "New" button.
+                    2. Enter all the information about Contact.Don't forget to fill the mandatory field,which
+                       are marked in "RED" colour.Please fill the "Mobile" field.Click save.<br></br>
+                    3. Scroll down you will find a Related list called "SMS Tracker".<br></br>
+                    4. Click "New SMS".<br></br>
+                    5. Enter the preferred message which you want to send or else click on the
+                       Choose Template lookup.Choose the template which you want to send.The template message
+                       will automatically appear on the Text Message Area.<br></br>
+                    6. Click "Send" Buttom
+                </p>
+                
+        </apex:pageBlockSection> 
+        
+        
+        <apex:pageBlockSection title="Bulk Sms from Lead">
+        
+                <p> 1. Go to Lead Tab.Select any "view" and click "Go" button.<br></br>
+                    2. Select the top most checkbox in order to send message to all the leads in the view.<br></br>
+                    3. In order to select preferred leads .Select those checkbox.<br></br>
+                    4. Click "BulkSMSLead button".This will take you to the visual force page,
+                       where all the leads select are displayed with there mobile numbers.<br></br>
+                    5. Enter the preferred message which you want to send or else click on the
+                       Choose Template lookup.Choose the template which you want to send.The template message
+                       will automatically appear on the Text Message Area<br></br>
+                    6. If you want to uncheck some of the Leads,to which you don't want to send sms,you can uncheck the "select" list.As you will
+                       uncheck the leads,the lead column will automatically disappear  from the list of selected Leads<br></br>
+                    7. If you click the "Reset" button the lead which you had unchecked will automatically appear in the list of all 
+                       the selected Leads<br></br>
+                    8. Click "Send" Buttom.
+                </p>
+            
+        </apex:pageBlockSection> 
+        
+    
+        <apex:pageBlockSection title="Bulk Sms from Contact">
+            
+                <p> 1. Go to Contact Tab.Select any "view" and click "Go" button.<br></br>
+                    2. Select the top most checkbox in order to send message to all the Contacts in the view.<br></br>
+                    3. In order to select preferred Contacts .Select those checkbox.<br></br>
+                    4. Click "BulkSMSContactsbutton".This will take you to the visual force page,
+                       where all the Contacts select are displayed with there mobile numbers.<br></br>
+                    5. Enter the preferred message which you want to send or else click on the
+                       Choose Template lookup.Choose the template which you want to send.The template message
+                       will automatically appear on the Text Message Area.<br></br>
+                    6. If you want to uncheck some of the Contacts,to which you don't want to send sms,you can uncheck the "select" list.As you will
+                       uncheck the leads,the lead column will automatically disappear from the list of selected Contacts<br></br>
+                    7. If you click the "Reset" button the contact which you had unchecked will automatically appear in the list of all 
+                       the selected Contacts<br></br>
+                    8. Click "Send" Buttom.
+                </p>
+            
+        </apex:pageBlockSection> 
+        
+       
+        
+        
+    </apex:pageBlock>
+</apex:page>

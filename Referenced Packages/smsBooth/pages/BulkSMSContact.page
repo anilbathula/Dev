@@ -1,0 +1,110 @@
+<apex:page standardController="Contact" extensions="sms_force_RI.BulkSMSContact" recordSetVar="Contact">
+<apex:pageMessages id="pgMsg"/>
+<apex:form >
+
+<script language="JavaScript">
+    window.onload = function() { 
+        check_length();
+    }
+    function check_length()
+    {
+        maxLen = 160;
+        if (document.getElementById('{!$Component.pb1:pbs2:pbsi1:msgArea}').value.length >= maxLen) {
+            var msg = "You have reached your maximum limit of characters allowed.!!";
+            alert(msg);
+            document.getElementById('{!$Component.pb1:pbs2:pbsi1:msgArea}').value = document.getElementById('{!$Component.pb1:pbs2:pbsi1:msgArea}').value.substring(0, maxLen);
+            //document.getElementById('{!$Component.pb1:pbs2:pbsi2:charUtil}').value = 0;
+            document.getElementById('{!$Component.pb1:pbs2:pbsi2:charUtil}').value =  document.getElementById('{!$Component.pb1:pbs2:pbsi1:msgArea}').value.length;
+        
+        }
+        else{
+            document.getElementById('{!$Component.pb1:pbs2:pbsi2:charUtil}').value =  document.getElementById('{!$Component.pb1:pbs2:pbsi1:msgArea}').value.length;
+        }
+    }
+</script>
+
+    <apex:pageBlock title="New Bulk SMS" id="pb1">
+    
+    <apex:pageBlockTable title="Selected Leads" columns="4" value="{!contacts}" var="c" width="100%"> 
+    
+        <apex:column >
+            <apex:facet name="header">Name</apex:facet>
+            <apex:outputField value="{!c.innerContact.Name}"/>            
+        </apex:column>
+        
+        <apex:column >
+            <apex:facet name="header">Mobile</apex:facet>
+            <apex:outputfield value="{!c.innerContact.MobilePhone}"/>
+        </apex:column>
+        
+        <apex:column >
+            <apex:facet name="header">Do Not Call</apex:facet>
+            <apex:outputField value="{!c.innerContact.DoNotCall}"  />
+        </apex:column> 
+        
+        <apex:column >
+                <apex:facet name="header">Select</apex:facet>                
+                <apex:inputCheckbox value="{!c.selectContact}">
+                    <apex:actionSupport event="onchange" action="{!selectContacts}"  reRender="pb1, pgMsg"/>  
+                </apex:inputCheckbox>               
+        </apex:column>  
+     
+    </apex:pageBlockTable> 
+    
+
+    <apex:pageBlockSection id="pbs1" columns="1" title="Processing Option" >
+    
+        <apex:pageBlockSectionItem helpText="Choose the template which u  want to send by clicking the look-up">
+            Choose Template  <apex:inputField value="{!sms.sms_force_RI__SFTemplates__c}">
+            <apex:actionSupport event="onchange" action="{!setTemplate}" oncomplete="check_length()" reRender="pbs2, pgMsg" />  
+            </apex:inputField>                               
+        </apex:pageBlockSectionItem>
+        
+    </apex:pageBlockSection>  
+     
+     <apex:pageBlockSection columns="1" id="pbs2" > 
+                      
+        <apex:pageBlockSectionItem id="pbsi1">
+                <apex:outputText value="Text Message" />
+                <apex:inputField value="{!sms.sms_force_RI__Text_Message__c}"  onkeyup="check_length()"  id="msgArea" style="width:60%;height:20;"/>
+        </apex:pageBlockSectionItem>
+            
+        
+        <apex:pageBlockSectionItem id="pbsi2">
+            Characters Utilized
+            <apex:inputText id="charUtil" size="3" disabled="true"/> 
+        </apex:pageBlockSectionItem>
+        
+    </apex:pageBlockSection>
+    
+    <apex:pageBlockSection title="Delivery Options" columns="5">  
+    
+            <apex:pageBlockSectionItem >
+                <apex:selectRadio value="{!selectedDeliveryOption}">
+                    <apex:selectOptions value="{!deliveryOption}"/>
+                </apex:selectRadio><p/>
+            </apex:pageBlockSectionItem>
+            
+            <apex:pageBlockSectionItem >                
+             Schedule Time<apex:inputField value="{!sms.sms_force_RI__Schedule_Time__c}"/>
+            </apex:pageBlockSectionItem>
+            
+            <apex:pageBlockSectionItem >                
+                <apex:outputLabel >Time Zone</apex:outputLabel>
+                <apex:selectList id="time_zones" size="1" value="{!scheduleTimeZone}" disabled="true">                    
+                    <apex:selectOptions value="{!timeZones}"></apex:selectOptions>
+                </apex:selectList>   
+            </apex:pageBlockSectionItem>
+           
+  
+    </apex:pageBlockSection>
+        
+    </apex:pageBlock>   
+    <center>
+        <apex:commandButton value="Send Sms" action="{!sendSMS}"/>
+        <apex:commandButton value="Reset Select" action="{!reset}" reRender="pb1, pgMsg"/>
+        <apex:commandButton value="Back" action="{!URLFOR($Action.Contact.List, $ObjectType.Contact)}"/>
+    </center>
+    
+</apex:form>  
+</apex:page>

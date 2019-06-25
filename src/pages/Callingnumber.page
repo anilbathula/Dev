@@ -1,0 +1,9 @@
+<apex:page controller="Callingnumber">
+   <apex:form >
+       <apex:pageBlock >
+           <apex:pageBlockSection >
+               <apex:inputField value="{!Con.name}"/>
+           </apex:pageBlockSection>
+       </apex:pageBlock>
+   </apex:form>
+</apex:page>

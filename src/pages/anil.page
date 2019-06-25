@@ -1,0 +1,9 @@
+<apex:page >
+<apex:outputText value="The formatted time right now is:{0,date,yyyy.MM.dd G 'at' HH:mm:ss z}">
+    <apex:outputText value="{!Now()}" />
+    <apex:outputText value="{!IF(Contains($User.LastName,'Anil'),'Adult','Minor')}"/>
+</apex:outputText>
+<!--<apex:image value="{!URLFOR($Resource.indicator)}"/>-->
+<apex:outputText value="{$System.Now()}" label="{$System.Today() + System.Now()}"/>
+
+</apex:page>

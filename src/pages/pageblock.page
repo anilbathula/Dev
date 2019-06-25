@@ -1,0 +1,26 @@
+<apex:page standardController="Lead" extensions="lComments" standardStylesheets="False" renderas="Pdf" >
+<apex:form id="main" >
+<apex:pageMessages /> 
+ <apex:panelGrid columns="2">
+    
+        <apex:repeat value="{!listHistory}" var="row">     
+             <apex:outputText value="{!row.createdDate}"/>
+             <apex:outputText value="{!row.Field}"/>
+             <apex:outputText value="{!row.oldvalue}"/>
+             <apex:outputText value="{!row.NewValue}"/>         
+       </apex:repeat>
+    
+    
+    <apex:pageBlock > 
+        <apex:pageBlockTable value="{!listHistory}" var="row">     
+             <apex:column value="{!row.createdDate}"/>
+             <apex:column value="{!row.Field}"/>
+             <apex:column value="{!row.oldvalue}"/>
+             <apex:column value="{!row.NewValue}"/>         
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+    </apex:panelGrid> 
+
+
+</apex:form>
+</apex:page>

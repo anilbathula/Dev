@@ -1,0 +1,21 @@
+<apex:page standardController="Contact" id="thePage">
+<apex:form > 
+  <apex:pageBlock title="Contacts">
+  <apex:pageBlockTable value="{!Contact}" var="ge">
+      <apex:column value="{!ge.Name}"  width="500">
+      </apex:column>    
+   <apex:column >
+   <apex:commandLink action="{!delete}">delete
+       <apex:param name="id" value="{!ge.id}"/>
+    </apex:commandLink>
+</apex:column>
+
+   <apex:column >
+   <apex:commandLink action="{!edit}">Edit
+       <apex:param name="id" value="{!ge.id}"/>
+    </apex:commandLink>
+</apex:column>
+ </apex:pageBlockTable>
+  </apex:pageBlock>
+  </apex:form>
+</apex:page>

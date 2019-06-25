@@ -1,0 +1,39 @@
+<apex:page controller="searchobj">
+ <apex:form >
+ 
+ <apex:pageMessages />
+ <apex:pageBlock >
+       
+                <apex:outputLabel value="Enter the Name of the object" />
+                <apex:inputText value="{!s}"/>
+     
+      <apex:pageBlockButtons >
+             <apex:commandButton value="Search records" action="{!processSelected}"  />
+            <apex:CommandButton Value="Refresh" action="{!Refresh}">
+                <apex:outputPanel id="refresh" rendered="true">
+                    <apex:outputPanel id="refresh1" rendered="{!refreshPage}">
+                    <script>
+                    window.top.location='/apex/SearchObj';
+                    </script>
+                    </apex:outputPanel>
+                </apex:outputPanel>
+            </apex:commandButton>
+    </apex:pageBlockButtons>
+         
+         <apex:pageBlockTable value="{!Records}" var="c" id="table">
+             
+                <!-- This is how we access the contact values within our cContact container/wrapper -->
+                <apex:column value="{!c.id}" />
+               <apex:column value="{!c.Name}" />
+               <apex:column value="{!c.phone}" />
+              <!-- <apex:column value="{!c.Email}" />-->
+               
+            </apex:pageBlockTable>
+         
+         
+     </apex:pageBlock>
+     
+     
+ 
+ </apex:form>
+</apex:page>

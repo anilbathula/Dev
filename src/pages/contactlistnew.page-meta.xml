@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>25.0</apiVersion>
+    <availableInTouch>false</availableInTouch>
+    <confirmationTokenRequired>false</confirmationTokenRequired>
+    <description>This page is used to redirect the account information details to contact through a visual force with out populating the vf page.{Dependent.Class.cont}</description>
+    <label>contactlistnew</label>
+    <packageVersions>
+        <majorNumber>2</majorNumber>
+        <minorNumber>72</minorNumber>
+        <namespace>OBJCNVTR</namespace>
+    </packageVersions>
+    <packageVersions>
+        <majorNumber>1</majorNumber>
+        <minorNumber>7</minorNumber>
+        <namespace>dupe_eliminator</namespace>
+    </packageVersions>
+    <packageVersions>
+        <majorNumber>1</majorNumber>
+        <minorNumber>0</minorNumber>
+        <namespace>sms_force_RI</namespace>
+    </packageVersions>
+</ApexPage>

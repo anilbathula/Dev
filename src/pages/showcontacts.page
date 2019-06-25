@@ -1,0 +1,28 @@
+<apex:page controller="showContactsController" tabstyle="Account">
+  <apex:pageBlock title="Recent Contacts">
+  <apex:pageblockTable value="{!conList}" var="con">
+  <apex:column >
+  <apex:facet name="header">Salesforce Id</apex:facet>
+  <apex:outputText value="{!con.id}"/>
+  </apex:column>
+  <apex:column >
+  <apex:facet name="header">Name</apex:facet>
+  <apex:outputText value="{!con.NAme}"/>
+  </apex:column>
+  </apex:pageblockTable>>
+  </apex:pageBlock>
+  
+  <apex:form >
+  <apex:pageBlock title="Redirect">
+  <apex:commandButton value="Go To My Custom Page" action="{!doSubmit}"/>
+  </apex:pageBlock>
+  </apex:form>
+  
+  <apex:form >
+  <apex:pageBlock title="Contact Form">
+  FIRST NAME:<apex:inputText value="{!con.FirstName}"/><br/><br/>
+  LAST NAME: <apex:inputText value="{!con.LastName}"/>
+  </apex:pageBlock>
+  <apex:commandButton value="Save" action="{!save}"/>
+  </apex:form>
+</apex:page>

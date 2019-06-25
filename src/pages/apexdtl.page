@@ -1,0 +1,51 @@
+<apex:page standardController="Lead" extensions="view">
+
+<script type="text/javascript">
+      function getSelectedID(id) {      
+          
+          viewFunction(document.getElementById(id).value);
+          
+      }
+      </script> 
+  <apex:form >
+  
+  <apex:actionFunction name="viewFunction" id="vfunc" action="{!getApplicantByStatus}" rerender="view">
+      <apex:param name="para" value=""/>   
+  
+    </apex:actionFunction>
+  
+      <apex:pageBlock title="Hello {!$User.FirstName}!">
+          <apex:outputLabel value="Status :" for="status"/>
+          <apex:inputField id="status" value="{!Lead.Status}" onchange="getSelectedID('{!$Component.status}');">
+                            
+          </apex:inputField>
+      </apex:pageBlock>
+      
+       <apex:pageBlock >
+           <apex:panelgroup id="view">
+              <apex:pageBlockTable id="viewApplicant" value="{!applicantNameByStatus}" var="app">
+              
+                  <apex:column headerValue="Applicant ID">
+                  <apex:commandLink reRender="detail" value="{!app}">                  
+                  <apex:param id="cid" value="{!app}"/>
+                         </apex:commandLink>                        
+                  </apex:column>
+                 
+                 
+              </apex:pageBlockTable>
+           </apex:panelgroup>
+      </apex:pageBlock> 
+      
+  
+ 
+</apex:form>
+<apex:outputPanel id="detail">
+<apex:actionStatus startText="Requesting...">
+<apex:facet name="stop">
+
+<apex:detail subject="{!$CurrentPage.parameters.cid}" relatedList="false"  title="false"/>
+</apex:facet>
+</apex:actionStatus>
+</apex:outputPanel>
+
+</apex:page>

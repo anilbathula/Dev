@@ -1,0 +1,49 @@
+<apex:page standardController="Comments__c" extensions="Comments">
+
+<apex:pageMessages />
+<apex:form >
+
+    <apex:pageBlock title="My Content" mode="edit">
+    
+        <apex:pageBlockButtons location="Top"  >
+             <apex:commandButton action="{!Edit}" value="Edit"/>
+             <apex:commandButton action="{!delete1}" value="Delete" onclick="loadOnClick()"/>             
+        </apex:pageBlockButtons>  
+            <script type="text/javascript">
+          
+            function loadOnClick(){     
+            try{         
+                var answer = confirm('Delete the Record?');                 
+            if(answer){                      
+                window.location='/home/home.jsp';          
+            }  
+            }catch(err){   
+                alert(err);
+            }
+            }            
+            </script>   
+     
+        <apex:pageBlockButtons location="Bottom">    
+            <apex:commandButton action="{!lead}" value="Lead"/>
+            <apex:commandButton action="{!Applicant}" value="Applicant"/>
+            <apex:commandButton action="{!Application}" value="Application"/>
+            <apex:commandButton action="{!Finance}" value="Finance"/>
+        </apex:pageBlockButtons>
+        
+        <apex:pageBlockSection title="Comments" columns="2">
+            <apex:outputText value="{!Comments__c.Name}"/> 
+            <apex:outputText value="{!Comments__c.Lead__r.name}" label="Lead"/> 
+            <apex:outputText value="{!Comments__c.Comments_text__c}" label="Comments" /> 
+            <apex:outputText value="{!Comments__c.Contact__r.Name}" label="Applicant"/> 
+            <apex:outputText value="{!Comments__c.Comment_Created_from__c}" label="Comment Created From"/>
+            <apex:outputText value="{!Comments__c.Opportunity__r.Name}" label="Application"/> 
+            <apex:outputText value="{!Comments__c.Role__c}" label="Role"/> 
+            <apex:outputText value="{!Comments__c.Finance__r.Name}" label="Finance"/>
+            <apex:outputText value="{!Comments__c.Createdby.Name}" label="Created By"/>
+            <apex:outputText value="{!Comments__c.CreatedDate}" label="Created date"/>
+        </apex:pageBlockSection>
+        
+    </apex:pageBlock> 
+</apex:form> 
+
+</apex:page>

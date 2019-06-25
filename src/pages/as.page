@@ -1,0 +1,12 @@
+<apex:page standardController="Lead">
+<apex:form >
+<apex:pageBlock > 
+        <apex:pageblockSection columns="1" title="Lead Program Details" >  
+                <apex:panelGrid columns="2">
+                <b><font face="Calibri"  size="4" color="Red">Email :
+                <apex:outputText value="{!Lead.Email}" style="font-size:15px;"/></font></b>
+                </apex:panelGrid>
+        </apex:pageblockSection> 
+    </apex:pageBlock> 
+</apex:form>
+</apex:page>

@@ -1,0 +1,65 @@
+<apex:page standardcontroller="Account" extensions="StudentsControllernew" >
+
+<script>
+alert("Checkvalue");
+alert({!acctSSC});
+function displayErr(){
+window.alert(“Checkvalue:");
+}
+</script>
+
+<apex:form id="theForm" >
+
+<apex:inlineEditSupport />
+
+<apex:pageBlock Title="All Students List" id="pbAccts">
+
+<apex:pageblockbuttons location="bottom">
+<apex:commandbutton action="{!saveAccounts}" value="Save" id="saveButton" />
+<apex:commandbutton value="Cancel" action="{!cancel}"/>
+</apex:pageblockbuttons>
+
+<apex:pageBlockTable value="{!acclist}" var="a" >
+ <apex:column value="{!a.name}"/>
+<apex:column value="{!a.website}"/>
+<apex:column value="{!a.phone}"/> 
+<apex:column headerValue="Name">
+<apex:outputField value="{!a.Name}"/>
+</apex:column>
+<apex:column headerValue="Phone">
+<apex:outputField value="{!a.phone}">
+<apex:inlineEditSupport showOnEdit="saveButton" event="ondblclick"/>
+</apex:outputField>
+</apex:column>
+<apex:column headerValue="website">
+<apex:outputField value="{!a.website}">
+<apex:inlineEditSupport showOnEdit="saveButton" event="ondblclick"/>
+</apex:outputField>
+</apex:column>
+</apex:pageBlockTable>
+
+<br/>
+
+<apex:outputText value="Please select the number of records to be displayed : "/>
+
+<apex:selectList size="1" value="{!pageSize}">
+<apex:selectOptions value="{!pageSizes}"/>
+<apex:actionSupport event="onchange" action="{!updateStandardSetController}" rerender="theForm"/>
+</apex:selectList>
+
+<apex:outputPanel layout="block" styleClass="pSearchShowMore" id="otpNav2">
+
+ <apex:outputText rendered="{!IF(acctSSC.resultSize < 10000,true,false)}"> <b> TOTAL </b> : {!acctSSC.resultSize} &nbsp;&nbsp;&nbsp; </apex:outputText>
+
+<apex:commandLink value="Previous Page " action="{!previous}" rendered="{!acctSSC.HasPrevious}" rerender="pbAccts" />
+<apex:outputPanel style="color: grey;" rendered="{!NOT(acctSSC.HasPrevious)}">Previous Page &nbsp; </apex:outputPanel>
+<apex:outputPanel style="color:grey;" rendered="{!NOT(acctSSC.HasNext)}">Next Page</apex:outputPanel>
+<apex:commandLink action="{!next}" value="Next Page" rendered="{!acctSSC.HasNext}" rerender="pbAccts"/>
+
+</apex:outputPanel>
+
+</apex:pageBlock>
+
+</apex:form>
+
+</apex:page>

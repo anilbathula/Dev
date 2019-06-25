@@ -1,0 +1,5 @@
+<apex:page standardcontroller="Contact" extensions="Sendemail_withbutton_click" action="{!SendEmail}">
+<apex:form >
+<!--<apex:commandButton value="Send Email!" action="{!SendEmail}"/>-->
+</apex:form>
+</apex:page>

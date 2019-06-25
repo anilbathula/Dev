@@ -1,0 +1,6 @@
+Hi {!Lead.OwnerFullName},
+A new Inbound Lead is generated from sms.
+
+Please click this link {!Lead.Link}.
+
+Thanks & Regards

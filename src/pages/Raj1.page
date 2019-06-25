@@ -1,0 +1,23 @@
+<apex:page standardcontroller="lead__c">  
+<apex:form >  
+
+ 
+    <apex:pageblock >  
+    
+        <apex:pageBlockButtons >
+           <apex:commandButton value="Cancel" action="{!cancel}"/>
+           <apex:commandButton value="Save" action="{!save}"/>
+        </apex:pageBlockButtons>
+        
+        <apex:pageblocksection columns="2">  
+        <apex:page >
+  
+</apex:page>
+            <apex:repeat value="{!$ObjectType.lead__c.FieldSets.Mytest}" var="f">  
+                <apex:inputfield value="{!lead__c[f]}">  
+            </apex:inputfield></apex:repeat>  
+        </apex:pageblocksection>  
+        
+    </apex:pageblock>  
+</apex:form>  
+</apex:page>

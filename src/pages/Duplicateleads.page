@@ -1,0 +1,32 @@
+<apex:page standardController="Duplicate_Leads__c"  >
+ <apex:sectionHeader title="Dupl" subtitle="{!Duplicate_Leads__c.name}"/> 
+ 
+ <apex:pageBlock title="Duplicate_Leads__c">  
+ <apex:pageBlockSection title="Information" columns="1"> 
+ <apex:panelGrid >
+  
+ <apex:outputField title="Duplicate_Lead Name" value="{!Duplicate_Leads__c.Name}"/> 
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ <apex:outputField title="Owner" value="{!Duplicate_Leads__c.OwnerId}"/>
+   <apex:image style="align:middle" url="{!URLFOR($Resource.New)}" width="200" height="100" />
+   <apex:image value="/Document/new.jpeg" styleClass="photo" width="256" height="256"/>
+   <img src="https://ap1.salesforce.com/servlet/servlet.ImageServer?id=00P90000001BN6Q&oid=00D90000000anuE" />
+ 
+  <!--<img src="/servlet/servlet.FileDownload?file=00P90000001BN6Q" width="150" height="150"/>-->
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ <apex:outputField title="What the program" style="align-center"  value="{!Duplicate_Leads__c.What_the_program__c}" />
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ <apex:outputField title="" value="{!Duplicate_Leads__c.Benefits__c}"/>  
+ <apex:outputText value="{!Duplicate_Leads__c.num1__c} " />
+ <apex:outputText value="{!Duplicate_Leads__c.num2__c} " />
+ <apex:outputText value="total" label="{$Duplicate_Leads__c.num1__c} +{$Duplicate_Leads__c.num2__c}"/>
+
+
+
+ 
+ 
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ </apex:panelGrid>
+ 
+</apex:pageBlockSection> </apex:pageBlock>
+ </apex:page>

@@ -1,0 +1,180 @@
+<apex:page standardController="Lead" extensions="lComments" standardStylesheets="False" >
+<apex:form id="main" >
+<apex:pageMessages />
+<table border="5"> 
+
+
+
+
+<!-- 2 row Comments and program details section -->
+<tr><td>
+<div style="overflow: auto; height: 250px; width:500px;"   >
+<apex:detail relatedList="false" relatedListHover="false" inlineEdit="true" title="false" />
+  <apex:outputText value="{!Lead.Name}" style="font-size:12px;"/>
+  <apex:panelGrid columns="2">
+    <apex:pageblock >
+        <apex:pageBlockTable value="{!listHistory}" var="row">     
+             <apex:column value="{!row.createdDate}"/>
+             <apex:column value="{!row.Field}"/>
+             <apex:column value="{!row.oldvalue}"/>
+             <apex:column value="{!row.NewValue}"/>         
+        </apex:pageBlockTable>
+    </apex:pageBlock> 
+    
+    <apex:pageBlock > 
+        <apex:pageBlockTable value="{!listHistory}" var="row">     
+             <apex:column value="{!row.createdDate}"/>
+             <apex:column value="{!row.Field}"/>
+             <apex:column value="{!row.oldvalue}"/>
+             <apex:column value="{!row.NewValue}"/>         
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+    </apex:panelGrid>
+   
+
+</div>
+
+
+</td><td>
+
+<div style="overflow: auto; height: 250px; width:500px;" >
+
+     <!--   <div id="parentdiv" style="text-align:center;width:30px;margin:auto; ">
+          <apex:commandButton value="New" action="{!custNew}" reRender="main,ref" rendered="{!hidebutton}" />
+        </div>-->
+   
+    <!--    <apex:pageBlock rendered="{!Property}" id="ref"   >     
+            <apex:pageBlockSection columns="1"  >        
+                <apex:inputField value="{!com.Name}" required="true" />
+                <apex:inputField value="{!com.Comments_text__c}" style="width:380px;height:100px" />                     
+            </apex:pageBlockSection>  
+            <apex:pageBlockButtons location="Bottom">     
+                <apex:commandbutton action="{!custSave}" title="Save" value="Save"  />     
+                <apex:commandbutton action="{!custCancel}" title="Save" value="Cancel"  />  
+                <apex:commandbutton action="{!cancel}" title="cancel" value="Cancel" onclick="window.history.previous()" />
+            </apex:pageBlockButtons>
+         </apex:pageBlock>    -->
+        
+      <!--  <apex:pageBlock rendered="{!hidebutton}" >
+            <apex:pageBlockTable value="{!listCom}" var="p" style="table-layout:fixed;background-image:url('http://blog.careesma.in/wp-content/uploads/2011/10/letter.png');"  >              
+                <apex:column width="100px" >
+                  <apex:facet name="header">Edit&nbsp;/&nbsp;Del</apex:facet>
+                    <apex:commandLink value="Edit" action="{!custEdit}" reRender="main,ref"  > 
+                        <apex:param name="cid" value="{!p.id}" assignTo="{!selid}"/>
+                    </apex:commandlink>
+                      &nbsp;&nbsp;&nbsp;&nbsp;
+                    <apex:commandLink value="Del" action="{!custDel}" reRender="main">
+                        <apex:param name="cid" value="{!p.id}" assignTo="{!delid}"/>
+                    </apex:commandLink>
+                </apex:column>             
+                
+                <apex:column style="overflow: hidden;"> 
+                    <apex:facet name="header">Name</apex:facet>
+                    {!If(LEN(p.Name)<25,p.Name,LEFT(p.Name,25))}
+                </apex:column>
+                
+                <apex:column style="overflow: hidden;height:20px; "> 
+                    <apex:facet name="header">Comments</apex:facet>
+                    {!If(LEN(p.Comments_text__c)<100,p.Comments_text__c,LEFT(p.Comments_text__c,100))}
+                </apex:column>
+                
+                 <apex:column style="overflow: hidden;height:20px; "> 
+                    <apex:facet name="header">Role</apex:facet>
+                    {!p.Role__c}
+                </apex:column>
+                
+                <apex:column style="overflow: hidden;height:20px; "> 
+                    <apex:facet name="header">Lead</apex:facet>
+                    {!p.lead__r.Name}
+                </apex:column>
+                
+                <apex:column style="overflow: hidden;height:20px; "> 
+                    <apex:facet name="header">Created Date</apex:facet>
+                    {!p.CreatedDate}
+                </apex:column>               
+                               
+            </apex:pageBlockTable> 
+        </apex:pageBlock>-->
+        
+       
+         
+      
+    
+</div>  
+</td></tr>
+
+<!-- 3 row -->
+<tr><td>
+<div style="overflow:auto; height: 250px; width:500px;"   >
+
+        <div id="parentdiv" style="text-align:center;width:30px;margin:auto; ">
+            <apex:commandButton value="New" action="{!custNew}" reRender="main,reff,ref" rendered="{!hidebutton}" />
+        </div>
+        <style type="text/css">
+            .newLink { color: #01A9DB; font-weight: bold;}
+            .sample { color: #0000ff; font-weight:bold;}
+            .newLinks { color:#00FF00 ; font-weight: bold;}
+        </style>
+           
+        <apex:pageBlock rendered="{!Property}" id="reff">     
+            <apex:pageBlockSection columns="1"   >        
+                 <apex:inputField value="{!com.Comments_text__c}" style="width:350px;height:100px" />                 
+                    <apex:panelGrid columns="4" width="650px;" id="ges" rendered="{!hideblock}">
+                        <apex:outputText value="{0,date,E MMM dd}" styleClass="newLink"  >
+                        <apex:param value="{!com.CreatedDate}" /> 
+                        </apex:outputText>                        
+                        <apex:outputText value="{!com.Comment_Created_from__c}" styleClass="newLink" / >
+                    </apex:panelGrid>    
+            </apex:pageBlockSection>  
+            <apex:pageBlockButtons location="Bottom">     
+                <apex:commandbutton action="{!custSave}" title="Save" value="Save"  />     
+                 <apex:commandbutton action="{!custCancel}" title="Save" value="Cancel"  />  
+               <!--<apex:commandbutton action="{!cancel}" title="cancel" value="Cancel" onclick="window.history.previous()" />-->
+            </apex:pageBlockButtons>
+         </apex:pageBlock> 
+         
+<apex:pageBlock rendered="{!hidebutton}" > 
+
+    
+
+    <apex:repeat value="{!listCom}" var="s"  >    
+                    
+            <apex:outputText value="{0,date,E MMM dd-}" styleClass="newLink" >
+            <apex:param value="{!s.CreatedDate}" /> 
+            </apex:outputText> 
+                   
+            <apex:outputText value="{!s.Owner.Name}" styleClass="newLink" /> 
+             -
+            <apex:outputText value="{!s.Role__c}" styleClass="newLinks" />
+            &nbsp;&nbsp;
+            <apex:commandLink value="Edit"  action="{!custEdit}" reRender="main,reff,ges" styleClass="newLink"> 
+            <apex:param name="cid" value="{!s.id}" assignTo="{!selid}" />
+            </apex:commandlink>       
+            |
+            <apex:commandLink value="Del" action="{!custDel}" reRender="main" >
+            <apex:param name="cid" value="{!s.id}" assignTo="{!delid}"/>
+            </apex:commandlink> 
+            
+            <br>
+            <apex:outputText value="{!s.Comments_text__c}" style="overflow:auto;width:350px;" />  
+            </br><br>   
+            <div style="width:100%; height:1px; background:grey;" />      
+            </br>
+      
+    </apex:repeat>        
+
+</apex:pageBlock>    
+
+</div>
+
+
+</td></tr>
+
+ 
+      
+      
+    
+
+</table>
+</apex:form>
+</apex:page>

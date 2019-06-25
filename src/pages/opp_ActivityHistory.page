@@ -1,0 +1,38 @@
+<apex:page standardController="Opportunity" extensions="ActivityControllerOPP">
+<Apex:form >
+<apex:pageBlock title="Activity History" >
+<apex:commandLink action="{!Cancel}" title="cancel" value="{!opp.Name}"   style="Color:#4483C2;"/> 
+
+
+<apex:pageBlockTable value="{!acthist}" var="a"  > 
+
+
+        <apex:column width="100px" >
+            <apex:facet name="header">Edit&nbsp;/&nbsp;Del</apex:facet>
+            <apex:commandLink value="Edit" action="{!pagerd}"  > 
+                             
+        </apex:commandlink>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        <apex:commandLink value="Del" action="{!delete}">    
+            </apex:commandLink>
+        </apex:column> 
+        
+    
+    <apex:column style="overflow: hidden;height:20px; "> 
+        <apex:facet name="header">Related To</apex:facet>
+        {!a.who.Name}
+    </apex:column>
+    <apex:column value="{!a.id}" />
+    <apex:column value="{!a.istask}"/>
+    <apex:column value="{!a.ActivityType}"/>
+    <apex:column value="{!a.CallType}"/>
+    <apex:column value="{!a.ActivityDate}"/>
+    <apex:column value="{!a.owner.Name}"/>
+  <!--  <apex:column value="{!a.who.Name}"  /> -->
+    <apex:column value="{!a.LastModifiedDate}"  />       
+</apex:pageBlockTable>
+
+</apex:pageBlock>
+</apex:form>
+</apex:page>
